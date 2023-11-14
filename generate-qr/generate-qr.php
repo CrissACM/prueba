@@ -4,23 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./index.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Generador de QR</title>
 </head>
 
 <body>
-  <h2>Formulario de QR</h2>
-  <section>
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-      <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre" required><br>
+  <section class="wrapper">
+    <form method="post" action="<?php echo $_SERVER[" PHP_SELF"]; ?>">
+      <h1>Formulario de QR</h1>
+      <div class="input-box">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <i class='bx bx-user'></i>
+      </div>
 
-      <label for="cantidad">Cantidad:</label>
-      <input type="number" name="cantidad" required><br>
+      <div class="input-box">
+        <input type="number" name="cantidad" placeholder="Cantidad" required>
+        <i class='bx bx-dollar-circle'></i>
+      </div>
 
-      <label for="telefono">Teléfono:</label>
-      <input type="tel" name="telefono" required><br>
+      <div class="input-box">
+        <input type="number" name="telefono" placeholder="Telefono" required>
+        <i class='bx bx-phone'></i>
+      </div>
 
-      <input type="submit" value="Enviar">
+      <input class="btn" type="submit" value="Enviar">
     </form>
   </section>
 </body>
@@ -53,5 +61,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Genera el código QR
   echo '<img src="https://api.qrserver.com/v1/create-qr-code/?data=' . urlencode($result) . '" alt="QR Code" />';
-  echo $result;
 }
